@@ -28,7 +28,7 @@ La estructura de los directorios de Linux, así como su contenido y funciones, v
 
 Como podéis ver en la siguiente imagen, todo el árbol de parte de una raíz común denominada root y que se simboliza por una barra inclinada. Aún así, esto no significa que varios de ellos no puedan estar en particiones separadas del resto. De hecho, en muchas distros GNU/Linux es una práctica muy común el hecho ubicar ciertos directorios en particiones separadas del resto.
 
-![](../img/f_struc.png)
+![](./img/f_struc.png)
 
 La FHS distingue entre lo que serían directorios estáticos, que son aquellos que contienen binarios, bibliotecas, documentación, etc., de los dinámicos, que son aquellos que requieren de acciones más a menudo, tales como copias de seguridad, etc.
 
@@ -40,7 +40,7 @@ Toda la estructura de directorios en los sistemas basados en UNIX parte de un di
 
 Cualquier dirección de archivo o carpeta en Linux empieza por el directorio raíz o /, seguido de todos los directorios y subdirectorios que que lo contienen, separados cada uno de ellos por /.
 
-![](../img/directorios1.webp)
+![](./img/directorios1.webp)
 
 A continuación conocerás con más en detalle a todos los directorios principales que parten del directorio raíz, junto con sus subdirectorios más importantes y los ficheros que suelen contener.
 
@@ -204,9 +204,9 @@ Cada archivo o directorio tiene tres tipos de permisos básicos:
 
 * **Ejecución (execution/x):** el permiso de ejecución afecta la capacidad de un usuario para ejecutar un archivo o ver el contenido de un directorio.
 
-![https://www.guru99.com/file-permissions.html](../img/PermissionsConcept.png){: style="height:200px;width:300px", align=left }
+![https://www.guru99.com/file-permissions.html](./img/PermissionsConcept.png){: style="height:200px;width:300px", align=left }
 
-![](../img/permisos.webp){: style="height:275px;width:425px"}
+![](./img/permisos.webp){: style="height:275px;width:425px"}
 
 !!!Tip 
     Podemos inspeccionar con detalle los permisos de arhivos y directorios con el comando:
