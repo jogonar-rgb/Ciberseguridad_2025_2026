@@ -58,3 +58,13 @@ nav:
     - Entornos Windows: warm/EntWin.md
     - Ejercicios propuestos Windows: warm/Ej_Win.md
     - Webgrafía: warm/webgrafia.md
+
+
+
+extra_css:
+  - stylesheets/extra.css
+
+extra:
+  analytics: 
+      provider: google 
+      property: G-3NX5MD5C8H
