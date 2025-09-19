@@ -6,15 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Apuntes, prácticas, ejercicio del curso de especialización de ciberseguridad. Ejercicio de comandos Linux.">
       
       
-        <link rel="canonical" href="https://jogonar-rgb.github.io/Ciberseguridad_2025_2026/warm/Ejercicios_Windows/">
+      
+        <link rel="canonical" href="https://jogonar-rgb.github.io/Ciberseguridad_2025_2026/warm/Ejercicios_Linux/">
       
       
-        <link rel="prev" href="../Apuntes_Windows/">
+        <link rel="prev" href="../Apuntes_Linux/">
       
       
-        <link rel="next" href="../webgrafia/">
+        <link rel="next" href="../Apuntes_Windows/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +24,7 @@
     
     
       
-        <title>Ejercicios propuestos Windows - Seguridad en sistemas del curso de especialista en ciberseguridad</title>
+        <title>Ejercicios básicos manejo Linux - Seguridad en sistemas del curso de especialista en ciberseguridad</title>
       
     
     
@@ -103,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ejercicios propuestos Windows
+              Ejercicios básicos manejo Linux
             
           </span>
         </div>
@@ -353,10 +355,17 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../Ejercicios_Linux/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -367,6 +376,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -399,17 +409,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Ejercicios_Windows/" class="md-nav__link">
         
   
   
@@ -420,7 +423,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -472,7 +474,61 @@
 
 
 
-  <h1>Ejercicios propuestos Windows</h1>
+  <h1>Ejercicios propuestos Linux</h1>
+
+<ol>
+<li>
+<p>En el primer ejercicio propuesto, vamos a hacer uso de la plataforma <a href="https://tryhackme.com/">Tryhackme</a>. TryHackMe es una plataforma web en la que podremos aprender hacking desde 0, a base de resolver retos con una filosofía de CTF y gamificación.</p>
+<p>Deberemos registrarnos para poder acceder a todas las máquinas y salas de la plataforma.</p>
+<p>Una vez dentro podremos acceder a la sala que vamos a usar. Cada sala en Tryhackme es un reto compuesto de diferentes tareas a completar para alcanzar el 100% del reto. Os paso el link de la sala (se pueden enlazar más salas, pero no como usuario free):</p>
+<p><a href="https://tryhackme.com/room/linuxfundamentalspart1">Linux Fundamentals part 1</a></p>
+<p>Estas salas con varias tareas cada una son completamente guiadas. Al principio de las mismas hay un vídeo explicando detalladamente el funcionamiento de las mismas. El vídeo está en inglés pero se pueden poner los subtítulos en inglés (bastante buenos) o con traducción automática (con lo que eso implique...). Debéis visionarlo con calma para después completar las tareas propuestas de la sala.</p>
+<div class="admonition task">
+<p class="admonition-title">Tarea</p>
+<p>El objetivo es completar la sala que está formada principalmente por ejercicios muy básicos de la línea de comandos de Linux. En vuestro dashboard os aparecerá el progreso de la sala.</p>
+<p><img alt="Tryhackme" src="../img/THM2.png" /></p>
+<p><strong>A modo de demostración, debéis adjuntar una captura de pantalla de vuestro dashboard donde se pueda comprobar que la sala 1 está completada al 100% (aparecerán en color verde).</strong></p>
+</div>
+<p>Algunos vídeos introductorios a Tryhackme:</p>
+<p><div class="video-wrapper">
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/ROO2pDPgja4" frameborder="0" allowfullscreen></iframe>  <br />
+</div></p>
+<p><div class="video-wrapper">
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/zGD78RNsp_w" frameborder="0" allowfullscreen></iframe>
+</div></p>
+</li>
+<li>
+<p>El segundo ejercicio que os propongo es una suerte de <a href="https://es.wikipedia.org/wiki/Wargame_(hacking)">wargame</a>.</p>
+<p>Iremos a la página de <a href="https://overthewire.org/wargames/bandit/">overthewire</a> que disponer de varios retos, aunque nosotros nos centraremos en <strong>Bandit</strong>.</p>
+<p>En la página inicial a la que os lleva el link, explica el mecanismo del reto. Os debéis conectar vía ssh a la máquina <em>bandit.labs.overthewire.org</em>, al puerto <em>2220</em> con el usuario <em>bandit0</em> y el password <em>bandit0</em>. En Linux podéis utilizar directamente la línea de comandos, si estáis bajo un sistema Windows deberéis utilizar algún programa del tipo PuTTY, superPuTTY, MobaXterm o <a href="https://www.netadmintools.com/best-putty-alternatives">similares</a>.</p>
+<p><img alt="" src="../img/bandit.png" /></p>
+<p><img alt="" src="../img/bandit0.png" /></p>
+<p>Una vez hecho eso, que es el level0, debéis ir al apartado del menú de la izquierda que os indicará que hacer para pasar de nivel, es decir, a <strong>Level 0 -&gt; Level 1</strong></p>
+<p><img alt="" src="../img/banditweb.png" /></p>
+<p>En este menú nos indica el objetivo a conseguir en este nivel:</p>
+<p><img alt="" src="../img/banditweb1.png" /></p>
+<p>Es decir, tal y como explica ahí, el password para ir al siguiente nivel está localizado en el archivo <strong>readme</strong> que está en el home del usuario. Con este password y usando el usuario <strong>bandit1</strong>, podremos conectarnos igual que antes por SSH pero esta vez al nivel1.</p>
+<p>Os indica además, a modo de ayuda, algunos de los comandos que podéis llegar a necesitar para resolver el nivel. No tienen por qué ser todos, dependiendo de la forma en que lo solucionéis.</p>
+<p>El juego sigue este mecanismo para ir pasando de nivel. En ocasiones como pistas os pone los comandos a utilizar tal y como hemos visto y en otras os sugiere lecturas para afrontar el reto:</p>
+<p><img alt="" src="../img/banditweb2.png" /></p>
+<div class="admonition task">
+<p class="admonition-title">Tarea</p>
+<p>El objetivo sería completar todos los niveles o, en su defecto, llegar lo más lejos posible.** Se habrá de aportar la contraseña de cada nivel así como una explicación de cómo se ha obtenido, a modo de prueba.**</p>
+</div>
+</li>
+<li>
+<p>Como tercer ejercicio, la propuesta es completar los desafíos de <a href="https://cmdchallenge.com/">cmdchallenge</a> y documentar las soluciones empleadas.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Fijáos que arriba a la derecha hay tres secciones para completar</p>
+<p><img alt="" src="./img/cmdchallenge.png" /></p>
+</div>
+</li>
+<li>
+<p>La cuarta propuesta se trata de un juego en terminal. Debéis clonaros el siguiente repositorio: <a href="https://gitlab.com/slackermedia/bashcrawl">https://gitlab.com/slackermedia/bashcrawl</a> mediante el comando <code>git clone</code> en vuestra máquina.</p>
+<p>Una vez clonado las instrucciones de cada fase están en los distintos archivos "scroll" que vayamos encontrando. Así pues, para comenzar a recibir instrucciones no debemos hacer más que <code>cat scroll</code> dentro del directorio <code>entrance</code></p>
+</li>
+</ol>
 
 
 
@@ -480,7 +536,8 @@
 
 
 
-
+  
+  
 
 
 
@@ -512,7 +569,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Pie" >
         
           
-          <a href="../Apuntes_Windows/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Entornos Windows">
+          <a href="../Apuntes_Linux/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Entornos Linux">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -522,20 +579,20 @@
                 Anterior
               </span>
               <div class="md-ellipsis">
-                Entornos Windows
+                Entornos Linux
               </div>
             </div>
           </a>
         
         
           
-          <a href="../webgrafia/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Webgrafía">
+          <a href="../Apuntes_Windows/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Entornos Windows">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Siguiente
               </span>
               <div class="md-ellipsis">
-                Webgrafía
+                Entornos Windows
               </div>
             </div>
             <div class="md-footer__button md-icon">
