@@ -215,7 +215,7 @@ Cada archivo o directorio tiene tres tipos de permisos básicos:
     ls -l
     ```
 
-    ![](../img/elese.png)
+    ![](./img/elese.png)
 
 #### ¿Cómo se cambian los permisos en Linux?
 
@@ -239,7 +239,7 @@ Existen dos formas de cambiar los permisos de archivos y directorios en Linux:
 * Modo simbólico: con notación basada en caracteres
 * Modo absoluto: con notación numérica, según el [sistema octal](https://es.wikipedia.org/wiki/Sistema_octal) o en [base 8](https://blogs.ua.es/matesfacil/secundaria-numeros-operaciones/sistemas-de-numeracion/sistema-de-numeracion-octal/), cuyos valores de forma resumida puedne verse en la imagen a continuación:
   
-  ![](../img/octal.png)
+  ![](./img/octal.png)
 
 Así pues, una tabla resumen en cuánto a los permisos vistos, sería la siguiente:
 
@@ -596,7 +596,7 @@ El beneficio aportado por usar una contraseña con salt es que un ataque simple 
 
 Así el formato del contenido del archivo /etc/shadow es:
 
-![](../img/shadow.jpg)
+![](./img/shadow.jpg)
 
 El campo a la derecha del nombre de usuario indica qué algoritmo se ha utilizado para cifrar la contraseña junto con el salt del tercer campo. Por curiosidad, algunos de estos algorimos son:
 
@@ -632,7 +632,7 @@ Si quisiéramos listar los directorios creados, podríamos utilizar el comando p
 ```sh
 ls
 ```
-![](../img/comandos1.png)
+![](./img/comandos1.png)
 
 Podríamos incluso darle una vuleta de tuerca al comando. Ya que los directorios que crea están vacíos, pero si quisiéramos crear una carpeta con subdirectorios en su interior utilizando un único comando, haríamos:
 
@@ -827,18 +827,18 @@ rm dir4/dir5/dir6/combinado.txt
 ```
 Además de archivos, se podría intentar eliminar directorios que no hagan falta, como por ejemplo:
 
-![](../img/comandos2.png)
+![](./img/comandos2.png)
 
 ¡Wow! ¿A qué se debe ese error? Pues que por motivos de seguridad o precaución, a pesar de que ```rm``` permite elminar miles de archivos con un único comando, no permite eliminar un directorio completo. Para ello necesitaremos el comando ```rmdir```:
 
-![](../img/comandos3.png)
+![](./img/comandos3.png)
 
 A pesar que las carpetas de la 1 a la 5 se han eliminado, las 6 nos ha dado un error. Esto es porque el comando ```mkdir```, una vez más por motivos de precacución, exige que la carpeta esté vacía para eliminarla.
 
 No obstante, la tarea más habitual cuando **realmente se está seguro** de que se desea eliminar un directorio y todo lo que contiene, es utilizar el comando ```rm``` de forma recursiva, usando el switch u opción ```-r```:
 
 
-![](../img/comandos4.png)
+![](./img/comandos4.png)
 
 ^^Recordatorio^^: aunque ```rm -r``` es rápido y eficaz, también es peligroso. Es más seguro eliminar archivos explícitamente para borrar un directorio, luego ```cd ..``` al padre antes de usar ```rmdir``` para eliminarlo.
 
@@ -873,14 +873,14 @@ ls /etc | less
 ```
 Una vuelta de tuerca más sería saber cuántas líneas sin repetir tiene el archivo ```combinado.txt```, es decir, cuántas líneas son sin contar las repetidas. El comando que nos permite hacer esto en Unix es ```uniq```:
 
-![](../img/comandos5.png)
+![](./img/comandos5.png)
 
 Parece que se están eliminando muy pocas, si es que hay alguna, de nuestras líneas duplicadas. Para entender por qué, necesitamos mirar la documentación del comando.  La mayoría de las herramientas de línea de comandos vienen con un breve (y a veces no tan breve) manual de instrucciones, se accede a través del comando ```man```. La salida se canaliza automáticamente a través del paginador ```less```, por lo que podremos movernos hacia adelante y hacia atrás,presionando finalmente "q" cuando queramos salir:
 
 ```sh
 man uniq
 ```
-![](../img/comandos6.png)
+![](./img/comandos6.png)
 
 El formato de las páginas de manual es a menudo conciso, se debe pensar en ellas más como una descripción general rápida de un comando que como un tutorial completo. A menudo son muy técnicas, pero generalmente se puede omitir la mayor parte del contenido y simplemente buscar los detalles de la opción o el argumento en el que estamos interesados.
 
@@ -919,7 +919,7 @@ Es mejor deshabilitar la cuenta de root por completo y luego, en lugar de permit
 
 Un ejemplo de todo lo comentado hasta ahora, sería:
 
-![](../img/comandos9.png)
+![](./img/comandos9.png)
 
 
 !!!Warning "¡Cuidado con sudo!"
