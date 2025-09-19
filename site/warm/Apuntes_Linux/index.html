@@ -13,6 +13,10 @@
         <link rel="canonical" href="https://jogonar-rgb.github.io/Ciberseguridad_2025_2026/warm/Apuntes_Linux/">
       
       
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../Apuntes_Windows/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -46,21 +50,9 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
-    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
-  
-
-
-  
-  
-
-<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-3NX5MD5C8H"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-3NX5MD5C8H",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-3NX5MD5C8H",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
-  
-    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
-  
 
     
     
@@ -215,10 +207,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../" class="md-tabs__link">
           
   
@@ -272,6 +266,8 @@
       
   
   
+    
+  
   
   
     
@@ -295,16 +291,17 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -321,13 +318,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
             Warm up
@@ -340,10 +337,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../EntLinux.md" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Entornos Linux
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -354,6 +371,465 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-de-ficheros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura de ficheros
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructura de ficheros">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#directorio-raiz-o" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directorio raíz o "/"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directorios-bin-sbin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directorio/s bin, sbin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directorio-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directorio /boot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directorio-dev" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directorio /dev
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directorio-etc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directorio /etc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directorio-lib" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directorio lib
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directorio-media" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directorio media
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directorio-opt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directorio opt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directorio-proc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directorio proc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directorio-root" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directorio /root
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directorio-tmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directorio tmp
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directorio-usr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directorio usr
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directorio-var" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directorio var
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directorio-home" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directorio home
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usuarios-y-grupos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usuarios y grupos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#permisos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Permisos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Permisos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grupos-de-permisos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grupos de permisos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipos-de-permisos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos de permisos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tipos de permisos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-se-cambian-los-permisos-en-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Cómo se cambian los permisos en Linux?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permisos-avanzados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Permisos avanzados
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Permisos avanzados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bit-setuid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bit setuid
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bit-setgid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bit setgid
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bit setgid">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bit-setgid-en-un-archivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bit setgid en un archivo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bit-setgid-en-un-directorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bit setgid en un directorio
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sticky-bit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sticky bit
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sticky bit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-sticky-bit-en-un-directorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      El sticky bit en un directorio
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contrasenas-en-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contraseñas en Linux
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contraseñas en Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-archivo-etcpasswd" class="md-nav__link">
+    <span class="md-ellipsis">
+      El archivo /etc/passwd
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-sistema-de-contrasenas-cifradas-en-unixlinux" class="md-nav__link">
+    <span class="md-ellipsis">
+      El sistema de contraseñas cifradas en Unix/Linux
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="El sistema de contraseñas cifradas en Unix/Linux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#la-funcion-de-cifrado-tradicional-crypt" class="md-nav__link">
+    <span class="md-ellipsis">
+      La función de cifrado tradicional crypt()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#echandole-salt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Echándole "salt"
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#principales-comandos-para-manejarse-en-el-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Principales comandos para manejarse en el terminal
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Principales comandos para manejarse en el terminal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crear-archivos-y-directorios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crear archivos y directorios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Crear archivos y directorios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creando-archivos-usando-la-redireccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creando archivos usando la redirección
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creando archivos usando la redirección">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-proposito-de-las-mayusculas-y-minusculas" class="md-nav__link">
+    <span class="md-ellipsis">
+      A propósito de las mayúsculas y minúsculas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#moviendo-y-manipulando-archivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Moviendo y manipulando archivos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Moviendo y manipulando archivos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eliminar-archivos-y-carpetas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eliminar archivos y carpetas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#un-poco-de-fontaneria-tuberias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Un poco de fontanería (tuberías)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-linea-de-comandos-y-el-superusuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      La línea de comandos y el superusuario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#archivos-ocultos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archivos ocultos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -366,7 +842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Ej_Linux.md" class="md-nav__link">
+      <a href="../Ejercicios_Linux.md" class="md-nav__link">
         
   
   
@@ -389,7 +865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../EntWin.md" class="md-nav__link">
+      <a href="../Apuntes_Windows/" class="md-nav__link">
         
   
   
@@ -412,7 +888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Ej_Win.md" class="md-nav__link">
+      <a href="../Ejercicios_Windows/" class="md-nav__link">
         
   
   
@@ -474,7 +950,7 @@
 
 
 
-  <h1>Conceptos básicos entornos Linux</h1>
+  <h1>Entornos Linux</h1>
 
 <p>En estos primeros pasos veremos algunos conceptos muy básicos que es necesario dominar previo a adquirir cualquier conocimiento relativo a la seguridad de sistemas.</p>
 <p>Estas nociones básicas nos darán las herramientas principales para desenvolvernos dentro de un sistema y entender los principios de ciberseguridad que se presentarán con posterioridad.</p>
@@ -1251,8 +1727,6 @@ ls<span class="w"> </span>-a<span class="w"> </span>.hidden
 
 
 
-  
-
 
 
 
@@ -1276,6 +1750,44 @@ ls<span class="w"> </span>-a<span class="w"> </span>.hidden
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Apuntes y ejercicios prácticas del curso de especialización ciberseguridad">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Apuntes y ejercicios prácticas del curso de especialización ciberseguridad
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Apuntes_Windows/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Entornos Windows">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                Entornos Windows
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
