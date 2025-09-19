@@ -53,18 +53,8 @@ markdown_extensions:
 nav:
   - Warm up:
     - warm/index.md
-    - Entornos Linux: warm/EntLinux.md
-    - Ejercicios propuestos Linux: warm/Ej_Linux.md
-    - Entornos Windows: warm/EntWin.md
-    - Ejercicios propuestos Windows: warm/Ej_Win.md
+    - Entornos Linux: warm/Apuntes_Linux.md
+    - Ejercicios propuestos Linux: warm/Ejercicios_Linux.md
+    - Entornos Windows: warm/Apuntes_Windows.md
+    - Ejercicios propuestos Windows: warm/Ejercicios_Windows.md
     - Webgrafía: warm/webgrafia.md
-
-
-
-extra_css:
-  - stylesheets/extra.css
-
-extra:
-  analytics: 
-      provider: google 
-      property: G-3NX5MD5C8H
