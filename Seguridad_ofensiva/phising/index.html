@@ -6,32 +6,32 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Apuntes, teoría, prácticas, ejercicio del curso de especialización de ciberseguridad. IES severo ochoa Elche. Hacking ético. incidentes de seguridad, puesta en producción segura.">
+        <meta name="description" content="Los ataques de phising cada vez son más elaborados con el fin de poder engañar con mayores garantías a las víctimas. En este caso vamos a simular ser un recurso compartido en una red, de tal forma que cuando un incauto intente acceder, se le redirigirá a una pantalla de login. En el hipotético proceso de login, se capturará usuario y contraseña.">
       
       
       
-        <link rel="canonical" href="https://jogonar-rgb.github.io/Ciberseguridad_2025_2026/Seguridad_ofensiva/">
+        <link rel="canonical" href="https://jogonar-rgb.github.io/Ciberseguridad_2025_2026/Seguridad_ofensiva/phising/">
       
       
-        <link rel="prev" href="../warm/webgrafia/">
+        <link rel="prev" href="../passw_manag/">
       
       
-        <link rel="next" href="Intro/">
+        <link rel="next" href="../HackingAD1/">
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
     
     
       
-        <title>Apuntes y ejercicios prácticos del curso de especialización de ciberseguridad en IES Severo Ochoa (Elche) - Seguridad en sistemas del curso de especialista en ciberseguridad</title>
+        <title>Ataques de phising haciendo uso de un servidor SSDP falso - Seguridad en sistemas del curso de especialista en ciberseguridad</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.e53b48f4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,7 +50,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -75,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#ssdp-simple-service-discovery-protocol" class="md-skip">
+          Saltar a contenido
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -85,7 +90,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabecera">
-    <a href=".." title="Seguridad en sistemas del curso de especialista en ciberseguridad" class="md-header__button md-logo" aria-label="Seguridad en sistemas del curso de especialista en ciberseguridad" data-md-component="logo">
+    <a href="../.." title="Seguridad en sistemas del curso de especialista en ciberseguridad" class="md-header__button md-logo" aria-label="Seguridad en sistemas del curso de especialista en ciberseguridad" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -105,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Apuntes y ejercicios prácticos del curso de especialización de ciberseguridad en IES Severo Ochoa (Elche)
+              Ataques de phising haciendo uso de un servidor SSDP falso
             
           </span>
         </div>
@@ -206,7 +211,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../warm/" class="md-tabs__link">
+        <a href="../../warm/" class="md-tabs__link">
           
   
   
@@ -230,7 +235,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -268,7 +273,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navegación" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Seguridad en sistemas del curso de especialista en ciberseguridad" class="md-nav__button md-logo" aria-label="Seguridad en sistemas del curso de especialista en ciberseguridad" data-md-component="logo">
+    <a href="../.." title="Seguridad en sistemas del curso de especialista en ciberseguridad" class="md-nav__button md-logo" aria-label="Seguridad en sistemas del curso de especialista en ciberseguridad" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -319,7 +324,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../warm/" class="md-nav__link ">
+            <a href="../../warm/" class="md-nav__link ">
               
   
   
@@ -354,7 +359,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../warm/Apuntes_Linux/" class="md-nav__link">
+      <a href="../../warm/Apuntes_Linux/" class="md-nav__link">
         
   
   
@@ -377,7 +382,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../warm/Ejercicios_Linux/" class="md-nav__link">
+      <a href="../../warm/Ejercicios_Linux/" class="md-nav__link">
         
   
   
@@ -400,7 +405,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../warm/Apuntes_Windows/" class="md-nav__link">
+      <a href="../../warm/Apuntes_Windows/" class="md-nav__link">
         
   
   
@@ -423,7 +428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../warm/Ejercicios_Windows/" class="md-nav__link">
+      <a href="../../warm/Ejercicios_Windows/" class="md-nav__link">
         
   
   
@@ -446,7 +451,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../warm/webgrafia/" class="md-nav__link">
+      <a href="../../warm/webgrafia/" class="md-nav__link">
         
   
   
@@ -532,7 +537,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -545,7 +550,7 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_2" id="__nav_2_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -567,7 +572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Intro/" class="md-nav__link">
+      <a href="../Intro/" class="md-nav__link">
         
   
   
@@ -590,7 +595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="nmap101/" class="md-nav__link">
+      <a href="../nmap101/" class="md-nav__link">
         
   
   
@@ -613,7 +618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="enumeracion/" class="md-nav__link">
+      <a href="../enumeracion/" class="md-nav__link">
         
   
   
@@ -636,7 +641,7 @@
   
   
     <li class="md-nav__item">
-      <a href="servicios_desact.md" class="md-nav__link">
+      <a href="../servicios_desact.md" class="md-nav__link">
         
   
   
@@ -659,7 +664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="exploit/" class="md-nav__link">
+      <a href="../exploit/" class="md-nav__link">
         
   
   
@@ -682,7 +687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="metasploit/" class="md-nav__link">
+      <a href="../metasploit/" class="md-nav__link">
         
   
   
@@ -705,7 +710,7 @@
   
   
     <li class="md-nav__item">
-      <a href="EternalBlue/" class="md-nav__link">
+      <a href="../EternalBlue/" class="md-nav__link">
         
   
   
@@ -728,7 +733,7 @@
   
   
     <li class="md-nav__item">
-      <a href="rev_shell/" class="md-nav__link">
+      <a href="../rev_shell/" class="md-nav__link">
         
   
   
@@ -751,7 +756,7 @@
   
   
     <li class="md-nav__item">
-      <a href="privesc/" class="md-nav__link">
+      <a href="../privesc/" class="md-nav__link">
         
   
   
@@ -774,7 +779,7 @@
   
   
     <li class="md-nav__item">
-      <a href="ad_enumeration/" class="md-nav__link">
+      <a href="../ad_enumeration/" class="md-nav__link">
         
   
   
@@ -797,7 +802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="passw_manag/" class="md-nav__link">
+      <a href="../passw_manag/" class="md-nav__link">
         
   
   
@@ -817,10 +822,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="phising/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Spoofing & phising
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -831,6 +856,84 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ssdp-simple-service-discovery-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSDP (Simple Service Discovery Protocol)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SSDP (Simple Service Discovery Protocol)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-ssdp" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Qué es SSDP?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-es-upnp" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Qué es UPnP?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phising" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phising
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tarea" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tarea
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referencias
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -843,7 +946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="HackingAD1/" class="md-nav__link">
+      <a href="../HackingAD1/" class="md-nav__link">
         
   
   
@@ -866,7 +969,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Pivoting/" class="md-nav__link">
+      <a href="../Pivoting/" class="md-nav__link">
         
   
   
@@ -889,7 +992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="webgrafia.md" class="md-nav__link">
+      <a href="../webgrafia.md" class="md-nav__link">
         
   
   
@@ -928,15 +1031,58 @@
 
 
 
-  <h1>Apuntes y ejercicios prácticos del curso de especialización de ciberseguridad en IES Severo Ochoa (Elche)</h1>
+  <h1>Spoofing & phising</h1>
 
-<p>Los ejercicios y conocimientos contenidos en las prácticas y/o apuntes de 
-todos los módulos tienen exclusivamente propósito formativo, por lo que 
-nunca se deberán utilizar con fines maliciosos o delictivos.</p>
-<p>Ningún alumno o alumna de este curso, ni profesor o profesora como 
-docentes, serán responsables de los daños directos o indirectos que 
-pudieran derivarse del uso inadecuado de las herramientas y mecanismos 
-expuestos.</p>
+<h2 id="ssdp-simple-service-discovery-protocol">SSDP (Simple Service Discovery Protocol)</h2>
+<p>SSDP es un protocolo de red basado en IP y UDP para anunciar y buscar/encontrar dispositivos en una red. Consigue este cometido sin la necesidad de mecanismos de configuración basados en un servidor (como pueda ser DHCP o DNS) y sin una configuración estática del host. Para su objetivo, SSDP se apoya en el protocolo <a href="https://en.wikipedia.org/wiki/Universal_Plug_and_Play">UPnP (Universal Plub and Play)</a>.</p>
+<p>UPnP es un set de protocolos de red que permite que dispositivos de red tales como ordenadores personales, impresoras, access-points, Chromecast, NAS, consolas, Smart TVs... descubran entre sí su presencia en la red y establezcan servicios de comunicación de red o compartición de datos. Un dispositivos compatible con UPnP no necesita ninguna configuración de red, puede integrarse en una red, obtener una IP, publicar su nombre y anunciar sus servicios bajo petición, todo de forma automática. De la misma forma, puede detectar la presencia y servicios de otros dispositivos.</p>
+<p><img alt="" src="../img/ssdp_wifi.png" /></p>
+<p>En principio fue concebido para uso residencial o pequeños entornos de oficina.</p>
+<h3 id="que-es-ssdp">¿Qué es SSDP?</h3>
+<p>SSDP es un protocolo basado en HTTP que se utiliza para descubrir dispositivos y servicios en redes locales. Es parte del conjunto de protocolos UPnP y permite a los dispositivos anunciar su presencia en la red o buscar otros dispositivos disponibles.</p>
+<p>Funcionamiento de SSDP:</p>
+<ul>
+<li><strong>Anuncio (Advertise)</strong>: Un dispositivo en la red que ofrece servicios (como una impresora o un servidor de medios) envía mensajes multicast SSDP al grupo multicast estándar (239.255.255.250 en IPv4 o FF02::C en IPv6) en el puerto 1900. Estos mensajes contienen información sobre el dispositivo y los servicios que ofrece.</li>
+<li><strong>Búsqueda (Search)</strong>: Un dispositivo que desea encontrar servicios envía una solicitud SSDP multicast (mensaje M-SEARCH) para buscar dispositivos específicos o servicios en la red.</li>
+<li><strong>Respuesta</strong>: Los dispositivos que coinciden con la búsqueda responden directamente al dispositivo solicitante con un mensaje unicast, proporcionando detalles de los servicios disponibles.</li>
+</ul>
+<h3 id="que-es-upnp">¿Qué es UPnP?</h3>
+<p>UPnP es un conjunto de protocolos que facilita la configuración automática de dispositivos en una red. Incluye SSDP para el descubrimiento, pero también abarca mecanismos para descripción, control, eventos y presentación de dispositivos.</p>
+<p>Componentes principales de UPnP:</p>
+<ul>
+<li><strong>Descubrimiento</strong>: Utiliza SSDP para encontrar dispositivos en la red.</li>
+<li><strong>Descripción</strong>: Una vez descubierto, un dispositivo proporciona detalles adicionales a través de un archivo de descripción XML (generalmente llamado device-desc.xml).</li>
+<li><strong>Control</strong>: Permite enviar comandos a dispositivos utilizando protocolos como SOAP (Simple Object Access Protocol).</li>
+<li><strong>Eventos</strong>: Los dispositivos notifican a otros sobre cambios en su estado.</li>
+<li><strong>Presentación</strong>: Permite interfaces de usuario, como páginas web, para interactuar con dispositivos.</li>
+</ul>
+<h2 id="phising">Phising</h2>
+<p>Los ataques de phishing son correos electrónicos, mensajes de texto, llamadas telefónicas o <strong>sitios web</strong> fraudulentos diseñados para engañar a los usuarios para que descarguen programas maliciosos, compartan información confidencial o datos personales (por ejemplo, números de la Seguridad Social y de tarjetas de crédito, números de cuentas bancarias, <strong>credenciales de inicio de sesión</strong>), o realicen otras acciones que les expongan a ellos mismos o a sus organizaciones a la ciberdelincuencia.</p>
+<p>El phishing es el tipo más común de ingeniería social, la práctica de engañar, presionar o manipular a las personas para que envíen información a las personas equivocadas. Los ataques de ingeniería social se basan en el error humano y en tácticas de presión para tener éxito. El atacante suele hacerse pasar por una persona u organización en la que la víctima confía -por ejemplo, un compañero de trabajo, un jefe, una empresa con la que la víctima o su empleador hacen negocios- y crea una sensación de urgencia que lleva a la víctima a actuar precipitadamente. Los hackers y estafadores utilizan estas tácticas porque es más fácil y menos costoso engañar a la gente que piratear un ordenador o una red.</p>
+<p>Según el FBI, los correos electrónicos de phishing son el método de ataque o vector más utilizado por los hackers para enviar ransomware a particulares y organizaciones. Según el informe Cost of a Data Breach 2022 de IBM, el phishing es la segunda causa más común de violación de datos.</p>
+<h2 id="tarea">Tarea</h2>
+<p>Vamos intentar simular un posible caso real en un ejercicio de red teaming.</p>
+<p>Nuestra tarea será realizar una prueba de concepto donde hagamos uso de dos técnicas muy asentadas. En primera instancia haremos <em>spoofing</em> de dispositivos en una supuesta red empresarial y tras ello, valiéndonos del <em>phishing</em>, obtendremos las credenciales de los usuarios.</p>
+<p>Necesitaréis dos máquinas:</p>
+<ul>
+<li>Windows/Linux como atacante</li>
+<li>Windows como víctima</li>
+</ul>
+<p>Podéis hacerlo con dos máquinas virtuales, con la vuestra física y otra virtual o como queráis, <u>lo importante es que se trate de dos máquinas diferente.</u></p>
+<p>Debéis buscar información de forma autónoma sobre cómo llevar a cabo este ataque con las dos herramienta que os propongo. Os doy un par de referencias:</p>
+<ul>
+<li>Evil-SSDP</li>
+<li>On-the-fly</li>
+</ul>
+<p>En uno de los dos casos, dependiendo del SO que utilicéis, puede que no tengáis las <strong>net-tools</strong> instaladas, únicamente <strong>iproute2</strong> por lo que habrá que hacer una pequeña modificación en el código Python para que funcione correctamente.</p>
+<p>Recordad que debe haber una parte de <em>spoofing</em> y otra de <em>phising</em>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Atención</p>
+<p>Debéis realizar la modificación del código en Python, no instalar las net-tools. Recordemos que estamos simulando un escenario real y debemos pasar lo más desapercibidos posibles.</p>
+</div>
+<h2 id="referencias">Referencias</h2>
+<p><a href="https://www.ibm.com/topics/phishing">IBM</a></p>
+<p><a href="https://www.imperva.com/learn/application-security/phishing-attack-scam/">Imperva</a></p>
 
 
 
@@ -977,7 +1123,7 @@ expuestos.</p>
       <nav class="md-footer__inner md-grid" aria-label="Pie" >
         
           
-          <a href="../warm/webgrafia/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Webgrafía">
+          <a href="../passw_manag/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Gestión y almacenamiento de credenciales en Windows">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -987,20 +1133,20 @@ expuestos.</p>
                 Anterior
               </span>
               <div class="md-ellipsis">
-                Webgrafía
+                Gestión y almacenamiento de credenciales en Windows
               </div>
             </div>
           </a>
         
         
           
-          <a href="Intro/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Introducción">
+          <a href="../HackingAD1/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Ataques en entornos Active Directory">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Siguiente
               </span>
               <div class="md-ellipsis">
-                Introducción
+                Ataques en entornos Active Directory
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1036,10 +1182,10 @@ expuestos.</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "toc.integrate", "navigation.expand", "navigation.top", "navigation.indexes", "content.tabs.link", "content.code.annotate", "content.code.copy", "navigation.footer"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "toc.integrate", "navigation.expand", "navigation.top", "navigation.indexes", "content.tabs.link", "content.code.annotate", "content.code.copy", "navigation.footer"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
     
   </body>
