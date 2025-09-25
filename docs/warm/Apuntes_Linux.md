@@ -364,9 +364,9 @@ $ ls -l archivo
 
 
 !!!Danger "Riesgo de seguridad"
-        El bit setuid podría ser bastante útil en varias aplicaciones. Sin embargo, debemos tener cuidado al establecer esos permisos especiales, ya que pueden crear problemas de seguridad.
+    El bit setuid podría ser bastante útil en varias aplicaciones. Sin embargo, debemos tener cuidado al establecer esos permisos especiales, ya que pueden crear problemas de seguridad.
 
-        Por ejemplo, un usuario normal puede obtener privilegios de superusuario ejecutando un programa que establece el UID  como root y realizar una escalada de privilegios.
+    Por ejemplo, un usuario normal puede obtener privilegios de superusuario ejecutando un programa que establece el UID  como root y realizar una escalada de privilegios.
 
 #### Bit setgid
 
@@ -570,7 +570,7 @@ Las contraseñas se almacenaban tradicionalmente en el archivo /etc/passwd en un
 Cuando Unix/Linux solicita su contraseña, necesita alguna forma de determinar que la contraseña es correcta. Muchos de los primeros sistemas informáticos almacenaban las contraseñas de todas sus cuentas en texto plano en un archivo. En circunstancias normales, el sistema protegía las contraseñas de modo que solo los usuarios privilegiados y las utilidades del sistema operativo pudieran acceder a ellas. Sin embargo, bien por accidente, bien por un error de programación o por un acto deliberado, un usuario no privilegiado podría acceder al contenido de este archivo. Para muestra un botón:
 
 !!!quote "Cita"
-        Una de las situaciones más memorables ocurrió a principios de la década de 1960 cuando un administrador del sistema en el sistema CTSS del MIT estaba editando el archivo de contraseñas y otro administrador del sistema estaba editando el mensaje diario que se imprime en el terminal de todos al iniciar sesión. Debido a un error de diseño del software, los archivos temporales del editor de los dos usuarios se intercambiaron y, por lo tanto, durante un tiempo, el archivo de contraseña se imprimió en cada terminal cuando se iniciaba sesión.
+    Una de las situaciones más memorables ocurrió a principios de la década de 1960 cuando un administrador del sistema en el sistema CTSS del MIT estaba editando el archivo de contraseñas y otro administrador del sistema estaba editando el mensaje diario que se imprime en el terminal de todos al iniciar sesión. Debido a un error de diseño del software, los archivos temporales del editor de los dos usuarios se intercambiaron y, por lo tanto, durante un tiempo, el archivo de contraseña se imprimió en cada terminal cuando se iniciaba sesión.
 
 El peligro real que planteaban estos sistemas es que los usuarios pueden hacer copias del archivo de contraseñas y robarlas sin el conocimiento del administrador del sistema.
 
@@ -706,7 +706,7 @@ cat test_?.txt
 cat test_*
 ```
 !!!Warning "Atención"
-        Precisamente por los carácteres comodín en los comandos, tampoco es recomendable usar signos de puntuación en los nombres de los archivos, de otra forma habría que "escapar" estos caracteres a la hora de trabajar en la línea de comandos con los nombres de los archivos
+    Precisamente por los carácteres comodín en los comandos, tampoco es recomendable usar signos de puntuación en los nombres de los archivos, de otra forma habría que "escapar" estos caracteres a la hora de trabajar en la línea de comandos con los nombres de los archivos
 
 Observando la salida de ```ls```, se puede ver que los únicos archivos o carpetas que comienzan por "t" son los tres archivos de prueba que acabamos de crear, por lo que incluso se podría simplificar ese último comando aún más ```cat t*```, lo que significa "concatenar todos los archivos cuyos nombres comienzan con una t y van seguidos de cero o más caracteres ”. Usemos esta capacidad para unir todos nuestros archivos en un solo archivo nuevo y luego verlo:
 
@@ -745,9 +745,9 @@ echo "Ambas mezcladas" > A.txt
 Se debe tener precaución con esto puesto que Windows es "case insensitive" y no distinguiría entre esos tres archivos, los trataría como uno solo.
 
 !!!note "Buenas prácticas de nomenclatura"
-       Cuando se considera tanto la distinción entre mayúsculas y minúsculas como el escape, una buena regla general es mantener los nombres de los archivos en minúsculas, con solo letras, números, guiones bajos y guiones. 
+    Cuando se considera tanto la distinción entre mayúsculas y minúsculas como el escape, una buena regla general es mantener los nombres de los archivos en minúsculas, con solo letras, números, guiones bajos y guiones. 
 
-       Además, aunque en linux los archivos no tienen extensión, se la pondremos con el fin de facilitar el trabajo.
+    Además, aunque en linux los archivos no tienen extensión, se la pondremos con el fin de facilitar el trabajo.
 
 
 ### Moviendo y manipulando archivos
@@ -843,7 +843,7 @@ No obstante, la tarea más habitual cuando **realmente se está seguro** de que 
 ^^Recordatorio^^: aunque ```rm -r``` es rápido y eficaz, también es peligroso. Es más seguro eliminar archivos explícitamente para borrar un directorio, luego ```cd ..``` al padre antes de usar ```rmdir``` para eliminarlo.
 
 !!!Warning "¡Peligro!"
-        A diferencia de las interfaces gráficas, ```rm``` no mueve archivos a ninguna carpeta llamada "papelera" o similar. En cambio, los elimina total e irrevocablemente. Se debe tener mucho cuidado con los parámetros que usa con ```rm``` para asegurarno de que solo están eliminando los archivos deseados. Y se debe tener especial cuidado al usar comodines, ya que es fácil eliminar accidentalmente más archivos de los que se pretendía. Un carácter "espacio" equivocado en el comando puede cambiarlo por completo: ```rm t*``` significa "eliminar todos los archivos que comienzan con t", mientras que ```rm t *``` significa "eliminar el archivo t así como cualquier archivo cuyo nombre conste de cero o más caracteres, que sería todo en el ¡directorio! Si no se está seguro, se puede usar la opción ```-i(interactive opcional)``` del ```rm``` que pedirá que se confirme la eliminación de cada archivo.
+    A diferencia de las interfaces gráficas, ```rm``` no mueve archivos a ninguna carpeta llamada "papelera" o similar. En cambio, los elimina total e irrevocablemente. Se debe tener mucho cuidado con los parámetros que usa con ```rm``` para asegurarno de que solo están eliminando los archivos deseados. Y se debe tener especial cuidado al usar comodines, ya que es fácil eliminar accidentalmente más archivos de los que se pretendía. Un carácter "espacio" equivocado en el comando puede cambiarlo por completo: ```rm t*``` significa "eliminar todos los archivos que comienzan con t", mientras que ```rm t *``` significa "eliminar el archivo t así como cualquier archivo cuyo nombre conste de cero o más caracteres, que sería todo en el ¡directorio! Si no se está seguro, se puede usar la opción ```-i(interactive opcional)``` del ```rm``` que pedirá que se confirme la eliminación de cada archivo.
 
 ### Un poco de fontanería (tuberías)
 
@@ -909,9 +909,9 @@ Por supuesto, una persona que haya iniciado sesión como root es tan capaz de co
 
 En un esfuerzo por reducir estos problemas, muchas distribuciones de Linux comenzaron a fomentar el uso del comando ```su```. Es la abreviatura de 'superuser' y nos permite cambiar a otro usuario de la máquina sin tener que hacer logout y login de nuevo. Cuando se usa sin argumentos, asume que se desea cambiar al usuario root, pero puede pasarle un nombre de usuario para cambiar a una cuenta de usuario específica. Fomentando el uso de ```su``` el objetivo era persuadir a los administradores para que pasaran la mayor parte de su tiempo usando una cuenta normal, que sólo cambiaran a la cuenta de superusuario cuando lo necesitaran y luego usaran el comando ```logout``` (o el atajo Ctrl-D ) tan pronto como fuera posible para regresar a su usuario normal.
 
-Al minimizar la cantidad de tiempo que se pasa conectado como root , el uso de ```su``` reduce la ventana de oportunidad para cometer un error catastrófico. A pesar de eso, siendo la naturaleza humana lo que es, muchos administradores han sido culpables de dejar abiertos terminales de larga duración en los que solían hacer ```su``` para cambiar a la cuenta de root. En ese sentido, sufue solo un pequeño paso adelante en materia de seguridad.
+Al minimizar la cantidad de tiempo que se pasa conectado como root , el uso de ```su``` reduce la ventana de oportunidad para cometer un error catastrófico. A pesar de eso, siendo la naturaleza humana lo que es, muchos administradores han sido culpables de dejar abiertos terminales de larga duración en los que solían hacer ```su``` para cambiar a la cuenta de root. En ese sentido, ```su``` fue solo un pequeño paso adelante en materia de seguridad.
 
-Cuando se utiliza ```su```  toda la sesión del terminal se cambia al otro usuario. Los comandos que no necesitan acceso de root, algo tan mundano como ```pwd``` o ```ls```, se ejecutarían bajo los auspicios y permisos del superusuario, aumentando el riesgo de que un error en el programa cause problemas importantes. Peor aún, si pierde la pista de qué usuario está actuando en cada momento, se puede eejecutar un comando que fuera bastante benigno cuando se ejecuta como usuario, pero que podría destruir todo el sistema si se ejecuta como root .
+Cuando se utiliza ```su```  toda la sesión del terminal se cambia al otro usuario. Los comandos que no necesitan acceso de root, algo tan mundano como ```pwd``` o ```ls```, se ejecutarían bajo los auspicios y permisos del superusuario, aumentando el riesgo de que un error en el programa cause problemas importantes. Peor aún, si pierde la pista de qué usuario está actuando en cada momento, se puede ejecutar un comando que fuera bastante benigno cuando se ejecuta como usuario, pero que podría destruir todo el sistema si se ejecuta como root .
 
 Es mejor deshabilitar la cuenta de root por completo y luego, en lugar de permitir sesiones de terminal de larga duración con poderes peligrosos, requerir que el usuario solicite específicamente derechos de superusuario por comando. La clave de este enfoque es un comando llamado ```sudo```( “**s**witch **u**ser and **do** this command”).
 
@@ -923,7 +923,7 @@ Un ejemplo de todo lo comentado hasta ahora, sería:
 
 
 !!!Warning "¡Cuidado con sudo!"
-        Si se indica que debe ejecutarse un comando con ```sudo```, aseguráos de comprender lo que hace el comando antes de continuar. Ejecutar con ```sudo``` le da a ese comando los mismos poderes que un superusuario.
+    Si se indica que debe ejecutarse un comando con ```sudo```, aseguráos de comprender lo que hace el comando antes de continuar. Ejecutar con ```sudo``` le da a ese comando los mismos poderes que un superusuario.
 
 
 
