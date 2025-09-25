@@ -75,13 +75,13 @@ nav:
   #  - Ataques en entornos Active Directory: Seguridad_ofensiva/HackingAD1.md
   #  - Laboratorio de pivoting: Seguridad_ofensiva/Pivoting.md
   #  - Webgrafía: Seguridad_ofensiva/webgrafia.md
-  #- Seguridad defensiva:
+  - Seguridad defensiva:
   #  - segdef/index.md
   #  - Análisis de Logs: segdef/logs.md
   #  - Monitorización con IDS/IPS: segdef/idps.md
-  #  - Hardening SSH: segdef/hardening.ssh.md
+    - Hardening SSH: segdef/hardening.ssh.md
   #  - Monitorización con Security Onion: segdef/seconion.md
-  #  - Monitorización de red con Arkime: segdef/arkime.md
+    - Monitorización de red con Arkime: segdef/arkime.md
   #  - Análisis de archivos con TruffleHog: segdef/truffle.md
   #  - (ACTUALIZADO) Análisis de archivos con TruffleHog: segdef/truffle2.md
   #  - Análisis de infraestructura (contenedores) con Trivy: segdef/trivy.md
