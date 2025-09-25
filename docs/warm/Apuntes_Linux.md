@@ -247,8 +247,8 @@ Así pues, una tabla resumen en cuánto a los permisos vistos, sería la siguien
 | :-----------: | :------------------------------------: |--------------|
 |    0    | ---  | Sin permisos |
 |    1   |  --x |  Ejecución |
-|    2    |  -w- |  Lectura |
-|    3    |  -wx |  Lectura + ejecución |
+|    2    |  -w- |  Escritura |
+|    3    |  -wx |  Escritura + ejecución |
 |    4    | r--  | Lectura  |
 |    5    | r-x  |  Lectura + ejecución |
 |    6    |  rw- | Lectura + escritura  |
