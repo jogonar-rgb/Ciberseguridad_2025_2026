@@ -92,3 +92,6 @@ nav:
   #  - Detección de web shells con Wazuh: IR/wazuh.md    
   #  - Reglas Sigma: IR/sigma.md 
 
+  
+extra_css:
+  - stylesheets/extra.css
