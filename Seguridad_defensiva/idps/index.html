@@ -6,15 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Apuntes, prácticas, ejercicio del curso de especialización de ciberseguridad. Arkime, blue team, seguridad devensiva, análisis de red, escáner de red, bastionado de redes y sistemas.">
+        <meta name="description" content="Apuntes, prácticas, ejercicio del curso de especialización de ciberseguridad. Dentro de la parte de seguridad defensiva del curso de especialista en ciberseguridad vamos a tratar esta vez los Intrusion Detection System (IDS), así como los Intrusion Prevention SYstem (IDP), enumerando sus ventajas y desventajas. En concreto vamos a trabajar con Suricata y justificaremos el motivo por el que lo preferiremos frente a Snort. Bastionado de redes y sistemas, hacking ético, incidentes de ciberseguridad.">
       
       
       
-        <link rel="canonical" href="https://jogonar-rgb.github.io/Ciberseguridad_2025_2026/Seguridad_defensiva/arkime/">
+        <link rel="canonical" href="https://jogonar-rgb.github.io/Ciberseguridad_2025_2026/Seguridad_defensiva/idps/">
       
       
-        <link rel="prev" href="../hardening.ssh/">
+        <link rel="prev" href="../">
       
+      
+        <link rel="next" href="../hardening.ssh/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +24,7 @@
     
     
       
-        <title>Analizando tráfico de red con Arkime - Seguridad en sistemas del curso de especialista en ciberseguridad</title>
+        <title>Monitorización mediante sistemas detectores de intrusos (IDS) y sistemas de prevención de intrusos (IPS) - Seguridad en sistemas del curso de especialista en ciberseguridad</title>
       
     
     
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mitre-attck" class="md-skip">
+        <a href="#introduccion" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -110,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Analizando tráfico de red con Arkime
+              Monitorización mediante sistemas detectores de intrusos (IDS) y sistemas de prevención de intrusos (IPS)
             
           </span>
         </div>
@@ -1007,10 +1009,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../idps/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Monitorización con IDS/IPS
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1021,6 +1043,126 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      IDS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IDS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-funcionan-los-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Cómo funcionan los IDS?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ips" class="md-nav__link">
+    <span class="md-ellipsis">
+      IPS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitaciones-de-de-los-idsips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitaciones de de los IDS/IPS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#siem" class="md-nav__link">
+    <span class="md-ellipsis">
+      SIEM
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#suricata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suricata
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Suricata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#suricata-vs-snort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Suricata vs Snort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#demo-y-ejercicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Demo y ejercicios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referencias
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1053,30 +1195,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Monitorización de red con Arkime
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../arkime/" class="md-nav__link">
         
   
   
@@ -1087,120 +1209,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#mitre-attck" class="md-nav__link">
-    <span class="md-ellipsis">
-      MITRE ATT&amp;CK
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#glosario-de-terminos" class="md-nav__link">
-    <span class="md-ellipsis">
-      Glosario de terminos
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Glosario de terminos">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#arkime" class="md-nav__link">
-    <span class="md-ellipsis">
-      Arkime
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#command-and-control-c2" class="md-nav__link">
-    <span class="md-ellipsis">
-      Command and control (C2)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ioc" class="md-nav__link">
-    <span class="md-ellipsis">
-      IOC
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#emotet" class="md-nav__link">
-    <span class="md-ellipsis">
-      Emotet
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lokibot" class="md-nav__link">
-    <span class="md-ellipsis">
-      Lokibot
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#spear-phising" class="md-nav__link">
-    <span class="md-ellipsis">
-      Spear phising
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#demostracion-practica-de-arkime" class="md-nav__link">
-    <span class="md-ellipsis">
-      Demostración práctica de Arkime
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#referencias" class="md-nav__link">
-    <span class="md-ellipsis">
-      Referencias
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1229,67 +1237,245 @@
 
 
 
-  <h1>Monitorización de red con Arkime</h1>
-
-<h2 id="mitre-attck">MITRE ATT&amp;CK</h2>
-<p>¿Has escuchado de MITRE ATT&amp;CK? ATT&amp;CK por sus siglas en inglés, significa: "tácticas, técnicas del adversario y conocimiento común". En una fuente de información colaborativa entre los profesionales de seguridad. </p>
-<p>Permite identificar mejor la huella de TTP (técnicas, tácticas y procedimientos) más amplia (y más profunda) que un adversario dado deja atrás en el curso de una campaña de penetración. Es una fuente a tener en cuenta para entender cómo operan los atacantes. </p>
-<p>Los defensores utilizan este framework y las herramientas asociadas en función de la fuente de datos que posean. Muchas de estas herramientas pueden tener capacidades que se superpongan pero representan la mejor opción para formar un conjunto amplio que nos permita defendernos de forma efectiva.</p>
-<p>Dependiendo del tipo de dato que tengamos, las herramientas se categorizan de forma diferente:</p>
-<p><img alt="" src="../img/mitre.png" /></p>
-<p>Si por ejemplo tuviéramos una fuente de datos relacionados con la red, podríamos mapear estos datos con MITRE ATT&amp;CK:</p>
-<p><img alt="" src="../img/mitre2.png" /></p>
-<p>Y así sucesivamente.</p>
-<h2 id="glosario-de-terminos">Glosario de terminos</h2>
-<h3 id="arkime">Arkime</h3>
-<div class="admonition quote">
-<p class="admonition-title">Cita de <a href="https://arkime.com/">Arkime</a></p>
-<p>Augment your current security infrastructure to store and index network traffic in standard PCAP format.
-Arkime is not meant to replace Intrusion Detection Systems (IDS) but instead provides more visibility. </p>
-</div>
-<h3 id="command-and-control-c2">Command and control (C2)</h3>
-<div class="admonition quote">
-<p class="admonition-title">Cita de <a href="https://www.tarlogic.com/es/glosario-ciberseguridad/c2-command-and-control/">Tarlogic</a></p>
-<p>La mayoría de las amenazas necesitan conectarse a un entorno fuera de la organización, donde poder comunicarse con los operadores de estas amenazas (Threat Actors) para recibir instrucciones, exfiltrar información, etc. Estas comunicaciones de manera general no son contra los entornos finales de estos actores, sino que son hacia servidores que controlan, centralizan la información y realizan las acciones necesarias. Estos servidores se conocen como servidores Command and Control, C&amp;C o C2.</p>
-</div>
-<h3 id="ioc">IOC</h3>
-<div class="admonition quote">
-<p class="admonition-title">Cita de <a href="https://attacksimulator.es/blog/8-tipos-de-indicadores-de-compromiso-ioc-y-como-reconocerlos/">attacksimulator</a></p>
-<p>Los indicadores de compromiso o IoCs son pistas y pruebas de una brecha de datos, que generalmente se ven durante un ataque de ciberseguridad. Estos indicadores pueden revelar que se ha producido un ataque, qué herramientas se han utilizado para el mismo y quién está detrás. Suelen ser recolectados a través del software, incluyendo los sistemas antivirus y antimalware. Para entenderlo mejor, intenta pensar que los indicadores de compromiso son como las migas de pan que deja un atacante tras un ciberataque.</p>
-</div>
-<h3 id="emotet">Emotet</h3>
-<div class="admonition quote">
-<p class="admonition-title">Cita de <a href="https://es.malwarebytes.com/emotet/">malwarebytes</a></p>
-<p>El troyano bancario Emotet fue identificado por primera vez por investigadores de seguridad en 2014. Emotet fue diseñado originalmente como un malware bancario que intentaba colarse en su ordenador y robar información confidencial y privada. En versiones posteriores del software se añadieron los servicios de envío de spam y malware, incluidos otros troyanos bancarios.</p>
-</div>
-<h3 id="lokibot">Lokibot</h3>
-<div class="admonition quote">
-<p class="admonition-title">Cita de <a href="https://www.welivesecurity.com/la-es/2021/09/30/lokibot-principales-caracteristicas-malware-roba-credenciales/">WeLiveSecurity</a></p>
-<p>Lokibot, también conocido como Loki PWS o Loki-bot, es un malware perteneciente a la familia de troyanos que está activo desde 2015 y es utilizado desde entonces en campañas a nivel global. Fue diseñado con el objetivo de robar credenciales de navegadores, clientes FTP/ SSH, sistemas de mensajería, y hasta incluso de billeteras de criptomonedas.</p>
-</div>
-<h3 id="spear-phising">Spear phising</h3>
-<div class="admonition quote">
-<p class="admonition-title">Cita de <a href="https://latam.kaspersky.com/resource-center/definitions/spear-phishing">Kasperksy</a></p>
-<p>El spear phishing es una estafa de correo electrónico o comunicaciones dirigida a personas, organizaciones o empresas específicas. Aunque su objetivo a menudo es robar datos para fines maliciosos, los cibercriminales también pueden tratar de instalar malware en la computadora de la víctima.</p>
-</div>
-<h2 id="demostracion-practica-de-arkime">Demostración práctica de Arkime</h2>
+<h2 id="introduccion">Introducción</h2>
+<p>En esta sección vamos a hacer una revisión de los IDS, los IPS y, de refilón, de los SIEM.  Se trata de tres herramientas que, aunque parecidas, contribuyen de forma diferente a la protección de nuestras redes y sistemas. Estamos hablando de unas herramientas de monitorización puesto que examinan el tráfico que entra y/o sale de nuestra red en búsqueda de comportamientos sospechosos.</p>
+<p><img alt="" src="../img/idps_1.png" /></p>
+<h2 id="ids">IDS</h2>
+<p>Son sistemas que monitorizan el tráfico entrante y lo cotejan con una base de datos actualizada de firmas de ataque conocidas. Ante cualquier actividad sospechosa, emiten una alerta a los administradores del sistema quienes han de tomar las medidas oportunas. Estos accesos pueden ser ataques esporádicos realizados por usuarios malintencionados o repetidos cada cierto tiempo, lanzados con herramientas automáticas. Estos sistemas sólo detectan los accesos sospechosos emitiendo alertas anticipatorias de posibles intrusiones, pero no tratan de mitigar la intrusión. Su actuación es reactiva.</p>
+<h3 id="como-funcionan-los-ids">¿Cómo funcionan los IDS?</h3>
+<p>Podemos distinguir dos tipos de IDS:</p>
+<ol>
+<li><strong>NIDS (Network-based intrusion detections systems)</strong>: Monitorizan el tráfico de dos formas; o bien configurándolo para que todo el tráfico de la red pase a través de él o haciendo un port mirroring.</li>
+<li><strong>HIDS (Host-based intrusion detections systems)</strong>: Se configura un sistema para comprobar actividad sospechosa o anómala en un host concreto en lugar de en toda la red. Esto limita en gran medida los dipositivos que se monitorizan pero permite detectar con mayor detalle amenazas en ese host.</li>
+</ol>
+<p>Típicamente se utilizan tres metodologías para detectar incidentes:</p>
 <ul>
 <li>
-<p>Analizando tráfico spear phising (Dridex)</p>
+<p><u>Basada en firmas:</u> compara las firmas con los eventos observados para identificar posibles incidentes. Se trata del método de detección más sencillo, ya que compara únicamente la unidad de actividad actual (como por ejemplo un paquete o una entrada de log) contra una lista de firmas mediante operaciones de comparación de cadenas. 
+    Estas firmas permiten al IDS distinguir entre el uso normal del PC y el uso fraudulento, y/o entre el tráfico normal de la red y el tráfico que puede ser resultado de un ataque o intento del mismo y sonpatrones de ataque preconfigurados y predeterminados.</p>
+<p><img alt="" src="../img/idps_2.png" style="height:275px;width:600px" /></p>
 </li>
 <li>
-<p>Identificando tráfico C2C (Emotet)</p>
+<p><u>Detección basada en anomalías:</u> compara las definiciones de lo que se considera una actividad normal con los eventos observados para identificar desviaciones significativas. Este método de detección puede ser muy eficaz para detectar amenazas desconocidas hasta ahora.</p>
+<p><img alt="" src="../img/idps_3.png" style="height:275px;width:425px" /></p>
 </li>
 <li>
-<p>Identificando tráfico C2C (Lokibot)</p>
-</li>
-<li>
-<p>Identificación de malware usando comunicaciones seguras con TLS y utilización de hashes JA3 para detectar nodos del command&amp;control</p>
+<p><u>Análisis de protocolos de estado:</u> utiliza información sobre las conexiones entre hosts y la compara con las entradas de una tabla de estado. La tabla de estado mantiene un registro de la conexión entre las computadoras que incluye: dirección IP de origen y puerto, dirección IP de destino y puerto, y los protocolos que se utilizan. 
+    Este método busca cambios repentinos o bruscos en la actividad de la red. Otras funciones incluyen a veces el seguimiento del estado del protocolo, los análisis dinámicos del protocolo de aplicación y el reensamblaje de paquetes IP, lo que evita que fragmentos de paquetes IP lleguen a la red interna.</p>
+<p>Entre las <strong>ventajas</strong> del análisis de protocolo de estado están:</p>
+<ul>
+<li>Identifica secuencias inesperadas de comandos.</li>
+<li>Añade características de estado al análisis regular de protocolos.</li>
+<li>Comprueba la racionalidad de los umbrales de los comandos individuales.</li>
+</ul>
+<p>Entre las <strong>desventajas</strong> están:</p>
+<ul>
+<li>Uso intensivo de recursos, sobrecarga de recursos elevada.</li>
+<li>No puede detectar ataques que no violen las características de comportamiento del protocolo generalmente aceptado.</li>
+<li>Presenta conflictos entre el modelo de protocolo utilizado por el sistema y cómo se implementa realmente el protocolo.</li>
+</ul>
 </li>
 </ul>
+<h2 id="ips">IPS</h2>
+<p>IPS (Intrusion Prevention System) o sistema de prevención de intrusiones: es un software que se utiliza para proteger a los sistemas de ataques e intrusiones. Como su nombre indica, su actuación es de carácter preventivo. </p>
+<p>Estos sistemas llevan a cabo un análisis en tiempo real de las conexiones y los protocolos para determinar si se está produciendo o se va a producir un incidente, identificando ataques según patrones, anomalías o comportamientos sospechosos y permitiendo el control de acceso a la red, implementando políticas que se basan en el contenido del tráfico monitorizado, es decir, el IPS además de lanzar alarmas, puede descartar paquetes y desconectar conexiones.</p>
+<p><img alt="" src="../img/idps_4.png" style="height:275px;width:600px" /></p>
+<p>Muchos proveedores ofrecen productos mixtos, llamándolos IPS/IDS, integrándose frecuentemente con cortafuegos y UTM (en inglés Unified Threat Management o Gestión Unificada de Amenazas) que controlan el acceso en función de reglas sobre protocolos y sobre el destino u origen del tráfico.</p>
+<p><img alt="" src="../img/idps_5.png" style="height:500px;width:550px" /></p>
+<h2 id="limitaciones-de-de-los-idsips">Limitaciones de de los IDS/IPS</h2>
+<p>No todo es bonito con estos sistemas, algunos de sus handicaps más importantes son:</p>
+<ul>
+<li>Un IDS sólo detectará lo que esté configurado para detectar. Es decir, están limitados únicamente a detectar ataques ya conocidos. </li>
+<li>Son completamente dependientes de las reglas que escribamos o les carguemos y esto lleva inevitablemente a los <strong>falsos positivos</strong>. Una regla configurada para detectar un ataque también puede generar una alerta ante tráfico legítimo si ésta no ha sido configurada con sumo cuidado o si el ataque usa un patrón común de tráfico.</li>
+<li>Capacidades limitadas ante tráfico cifrado.</li>
+<li>Su visibilidad está limitada en función de dónde se coloquen en la red.</li>
+</ul>
+<h2 id="siem">SIEM</h2>
+<p>SIEM (Security Information and Event Management) o sistema de gestión de eventos e información de seguridad: es una solución híbrida centralizada que engloba la gestión de información de seguridad (Security Information Management) y la gestión de eventos (Security Event Manager). </p>
+<p>La tecnología SIEM proporciona un análisis en tiempo real de las alertas de seguridad generadas por los distintos dispositivos hardware y software de la red. Recoge los registros de actividad (logs) de los distintos sistemas, los relaciona y detecta eventos de seguridad, es decir, actividades sospechosas o inesperadas que pueden suponer el inicio de un incidente, descartando los resultados anómalos, también conocidos como falsos positivos y generando respuestas acordes en base a los informes y evaluaciones que registra, es decir, es una herramienta en la que se centraliza la información y se integra con otras herramientas de detección de amenazas.</p>
+<p><img alt="" src="../img/idps_6.png" style="height:400px;width:650px" /></p>
+<h1 id="suricata">Suricata</h1>
+<p>Suricata es un sistema de detección de código abierto que puede actuar tanto como IDS como IPS. Su desarrollo corresponde a Open Information Security Foundation (OSIF). Utiliza un set de reglas y firmas que permite detectar y prevenir amenazas. Puede correr en Windows, Mac, Unix y Linux.</p>
+<p><img alt="" src="../img/idps_7.webp" /></p>
+<h2 id="suricata-vs-snort">Suricata vs Snort</h2>
+<p>Snort es el otro gran actor conocido en el juego de los IDS. También de código abierto, aunque posee dos sets de reglas principales: las community edition y las de suscriptor. Estas últimas son de pago y están desarrolladas, probadas y aprobadas por el grupo de seguridad de Cisco, Talos. </p>
+<p><img alt="" src="../img/idps_8.png" /></p>
+<p>En esencia, Suricata permite acciones por defecto (principalmente relacionadas con la funcionalidad de IPS), que Snort no. No obstante, con una serie de modificaciones es posible hacer que la funcionalidad de Snort pueda ser casi igual, sino igual, a la de Suricata. Aún con todo esto y siempre sin tener en cuenta preferencias personales, podemos destacar algunas <strong>ventajas</strong> de Suricata:</p>
+<ul>
+<li>Trabaja con multithreading. Esto representa una gran ventaja puesto que a día de hoy es normal analizar grandes cantidades de tráfico que requieren un gran procesado, por lo que sin duda este punto marca una gran diferencia.</li>
+<li>Es multitenancy. Esto quiere decir que podemos tener diferentes conjuntos de reglas aplicándose al mismo tiempo y asignar cada una de ellas a una VLAN diferente, por ejemplo.</li>
+<li>Se podría decir que el logging de Suricata es <em>de mejor calidad</em> y que permite extraer mayor información del tráfico que lo atraviesa.</li>
+<li>Permite utilizar directamente, sin modificación alguna, las reglas de Snort.</li>
+</ul>
+<p>Como todo, siempre hay <strong>desventajas o inconvenientes</strong>, quizás incluso aplicable a cualquier IDS/IPS:</p>
+<ul>
+<li>La configuración es ardua y difícil. Tunearlo hasta que sea realmente útil puede llegar a ser un auténtico calvario que haga replantearse la utilidad vs esfuerzo.</li>
+<li>Una de las causas del punto anterior sería la gran cantidad de falsos positivos debido a reglas, en ocasiones, demasiado genéricas. Las reglas de pago de Snort por ejemplo mejoran esto en gran medida.</li>
+<li>Las empresas que se lo pueden permitir económicamente suelen desestimar Suricata en favor de soluciones comerciales como los NGFW (Next Generation Firewalls) o plataformas como las de Fortinet o IBM.</li>
+<li>Hoy en día gran cantidad del tráfico va cifrado y el SSL Stripping puede convertirse en un <a href="https://www.calyptix.com/top-threats/nsa-warns-of-https-inspection-risks/">gran problema</a>, ya sea por condiciones de confidencialidad, como por la gran cantidad de recursos que supone de hardware, de adminstración de endpoints o errores de certificados en los firewalls.</li>
+</ul>
+<h2 id="demo-y-ejercicios">Demo y ejercicios</h2>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Para este ejercicio he utilizado una máquina virtual Debian 11 Bullseye con la interfaz en modo puente, instalando Suricata desde los repositorios. Si bien Suricata puede instalarse en cualquier distribución, es posible que necesitéis algunos pasos adicionales o algo diferentes si utilizáis otra.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Atención</p>
+<p>Todos los comandos de esta demo han sido ejecutados con el usuario root o, en su defecto, usando <code>sudo</code>.</p>
+</div>
+<p>En este ejercicio deberéis llevar a cabo las siguientes acciones:</p>
+<ol>
+<li>
+<p>Instalar Suricata
+    Hay varias opciones para instalar:</p>
+<ul>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-install-suricata-on-debian-11">Desde el repositorio de paquetes de la distribución Linux en concreto</a></li>
+<li><a href="https://redmine.openinfosecfoundation.org/projects/suricata/wiki/Ubuntu_Installation_-_Personal_Package_Archives_%28PPA%29">Desde un repositorio personal (PPA)</a></li>
+<li><a href="https://suricata.readthedocs.io/en/suricata-6.0.0/install.html">Compilando el código fuente</a></li>
+</ul>
+<p>Yo os recomiendo la primera opción, que siempre es la más sencilla.</p>
+</li>
+<li>
+<p>Configurarlo como IDS</p>
+<ul>
+<li>El archivo de configuración a modificar está en <code>/etc/suricata/suricata.yaml</code></li>
+<li>
+<p>Comprobad el nombre de la interfaz de vuestra máquina:</p>
+<p><img alt="" src="../img/idps_9.png" /></p>
+</li>
+<li>
+<p>Tras ello, en el archivo de configuración anterior, colocadlo donde corresponde en la sección <code>af.packet</code> del mismo:   </p>
+<p><img alt="" src="../img/idps_10.png" /></p>
+</li>
+<li>
+<p>Para permitir que Suricata permita una recarga <em>en vivo</em> de las reglas, es decir, que se puedan añadir, eliminar y editar las reglas sin la necesidad de reiniciar el proceso de Suricata:    </p>
+<p><img alt="" src="../img/idps_11.png" /></p>
+<p>Y con este comando le diremos a Suricata que recargue todas las reglas sin reiniciar el proceso:</p>
+<div class="highlight"><pre><span></span><code><span class="go">kill -usr2 $(pidof suricata)</span>
+</code></pre></div>
+</li>
+<li>
+<p>Actualizamos las reglas de Suricata:</p>
+<div class="highlight"><pre><span></span><code><span class="go">suricata-update -o /etc/suricata/rules</span>
+</code></pre></div>
+</li>
+<li>
+<p>Y para validar la configuración (tardará un poco):
+    <img alt="" src="../img/idps_12.png" /></p>
+</li>
+<li>
+<p>Se inicia el servicio y se comprueba que está activo (tardará un par de minutos en cargar y parsear las reglas):
+    <div class="highlight"><pre><span></span><code><span class="go">systemctl start suricata.service</span>
+
+<span class="go">systemctl start suricata.service</span>
+</code></pre></div>
+    <img alt="" src="../img/idps_13.png" /></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Comprobar que muestra las alertas que detecta de acuerdo a sus reglas</p>
+<ul>
+<li>
+<p>Probaremos la siguiente regla (<a href="https://www.digitalocean.com/community/tutorials/understanding-suricata-signatures">explicación del formato de las reglas/firmas</a>):</p>
+<p><img alt="" src="../img/idps_14.png" /></p>
+<p>Que generará una alarma cuando un posible intruso use el comando <code>id</code> y éste responda con root. </p>
+<p>Para comprobarlo, accederemos a un site que simule este comportamiento ejecutando lo el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code><span class="go">curl http://testmynids.org/uid/index.html</span>
+</code></pre></div>
+</li>
+<li>
+<p>Y examinamos los logs en busca de la alerta, utilizando su identificador:</p>
+<p><img alt="" src="../img/idps_15.png" /></p>
+<p>Suricata también loguea eventos en <code>/var/log/suricata/eve.log</code> usando un formato JSON. La documentación de Suricata recomienda usar la utilidad <code>jq</code> para leer y filtrar las entradas de este archivo. Así pues, lo instalamos:</p>
+<div class="highlight"><pre><span></span><code><span class="go">apt install jq</span>
+</code></pre></div>
+<p>Y buscamos la alerta correspondiente:</p>
+<div class="highlight"><pre><span></span><code><span class="go">jq &#39;select(.alert .signature_id==2100498)&#39; /var/log/suricata/eve.json</span>
+</code></pre></div>
+</li>
+</ul>
+<div class="admonition task">
+<p class="admonition-title">Tarea</p>
+<p>Documenta adecuadamente todo este proceso con las capturas de pantalla y las explicaciones pertinentes que demuestren la realización y comprobación del mismo.</p>
+</div>
+</li>
+<li>
+<p>Configurar Suricata como IPS y comprobar su funcionamiento</p>
+<p>En este caso vamos a ver como trabajar en capa 3 con el modo <em>inline</em> de Suricata usando <code>iptables</code>. Para ello, necesitamos instalar una dependencia:</p>
+<div class="highlight"><pre><span></span><code><span class="go">apt-get -y install libnetfilter-queue-dev</span>
+</code></pre></div>
+<p>Ahora haremos que Suricata corra en modo NFQ, o lo que es lo mismo, le decimos que acepte los paquetes que le reenvíe <code>iptables</code> sin que el firewall siga aplicando sus reglas al paquete (es posible que tarde varios minutos):</p>
+<p><div class="highlight"><pre><span></span><code><span class="go">suricata -c /etc/suricata/suricata.yaml -q 0</span>
+</code></pre></div>
+De la misma forma, debemos decirle al firewall que reenvíe todos los paquete que entran y salen de nuestra máquina a Suricata:</p>
+<div class="highlight"><pre><span></span><code><span class="go">sudo iptables -I INPUT -j NFQUEUE</span>
+<span class="go">sudo iptables -I OUTPUT -j NFQUEUE</span>
+</code></pre></div>
+<p>Podemos ver las reglas activas del firewall con:</p>
+<div class="highlight"><pre><span></span><code><span class="go">iptables -vnL</span>
+</code></pre></div>
+<p>Por defecto Suricata corre en modo IDS así que para activar el IPS haremos:</p>
+<p><div class="highlight"><pre><span></span><code><span class="go">systemctl edit suricata.service</span>
+</code></pre></div>
+Y añadimos las líneas resaltadas:</p>
+<div class="highlight"><pre><span></span><code><span class="c">### Editing /etc/systemd/system/suricata.service.d/override.conf</span>
+<span class="c">### Anything between here and the comment below will become the new contents of the file</span>
+
+<span class="hll"><span class="s">[Service]</span>
+</span><span class="hll">ExecStart<span class="s">= </span>
+</span><span class="hll">ExecStart<span class="s">=/usr/bin/suricata -c /etc/suricata/suricata.yaml --pidfile /run/suricata.pid -q 0 -vvv</span>
+</span><span class="hll">Type<span class="s">=simple</span>
+</span>
+<span class="c">### Lines below this comment will be discarded</span>
+<span class="s">. . .</span>
+</code></pre></div>
+<p>Donde <code>ExecStart=</code> borra el comando por defecto que systemd utiliza para iniciar un servicio. La siguiente línea define el nuevo comando a utilizar y <code>Type=simple</code> se asegura de que systemd pueda manejar el proceso de Suricata como cualquier otro servicio cuando está corriendo en modo IPS.</p>
+<p>Guardamos y reiniciamos systemd para que detecte la nueva configuración del servicio de Suricata:</p>
+<div class="highlight"><pre><span></span><code><span class="go">systemctl daemon-reload</span>
+</code></pre></div>
+<p>Reiniciamos Suricata y comprobamos su estado:</p>
+<div class="highlight"><pre><span></span><code><span class="go">sudo systemctl restart suricata.service</span>
+<span class="go">sudo systemctl status suricata.service</span>
+</code></pre></div>
+<div class="admonition task">
+<p class="admonition-title">Tarea</p>
+<p>Modifica la regla que hemos comprobado anteriormente para que en lugar de generar una alerta (alert), descarte (drop) los paquetes que hagan match con esa regla.</p>
+</div>
+</li>
+<li>
+<p>Escribir una regla para el IPS y comprobar que funciona</p>
+<p>Para este cometido vamos otra vez al archivo de configuración <code>suricata.yaml</code> y le vamos a indicar que tenga en cuenta un nuevo fichero de reglas/firmas que crearemos más tarde con nuestra regla concreta:</p>
+<p><img alt="" src="../img/idps_16.png" /></p>
+<div class="admonition task">
+<p class="admonition-title">Tarea</p>
+<p>A partir de la documentación proporcionada o de otra que podáis encontrar por Internet, escribid una regla de Suricata para que cuando se produzca una conexión desde cualquier IP origen a cualquier IP destino y puerto 8000, el tráfico sea bloqueado por <code>iptables</code>. 
+Ponedle SID 9000001 por ejemplo, para que no haya conflicto con otra regla ya existente.
+Para comprobarla, en la máquina donde está Suricata:</p>
+<div class="highlight"><pre><span></span><code><span class="go">nc -nvlp 8000</span>
+</code></pre></div>
+<p>Y en la máquina anfitriona:</p>
+<p><div class="highlight"><pre><span></span><code><span class="go">nc IP_Maq_Virtual 8000</span>
+</code></pre></div>
+<img alt="" src="../img/idps_18.png" /> </p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Nota</p>
+<p>Recordad el comando para recargar las reglas (puede tardar un rato):
+<div class="highlight"><pre><span></span><code><span class="go">kill -USR2 $(pidof suricata)</span>
+</code></pre></div>
+Si no os funciona, de acuerdo con la <a href="https://suricata.readthedocs.io/en/suricata-6.0.0/rule-management/rule-reload.html">documentación</a>, probad:</p>
+<div class="highlight"><pre><span></span><code><span class="go">suricatasc -c ruleset-reload-nonblocking</span>
+</code></pre></div>
+</div>
+</li>
+</ol>
 <h2 id="referencias">Referencias</h2>
-<p><a href="https://www.incibe-cert.es/blog/matriz-mitre-tacticas-y-tecnicas-entornos-industriales">La matriz de MITRE: tácticas y técnicas en entornos industriales</a></p>
-<p><a href="https://www.eclecticiq.com/take-action-with-cti/how-to-use-mitre-attck-to-map-and-track-adversary-ttps">How to Use MITRE ATT&amp;CK to Map and Track Adversary TTPs</a></p>
+<p><a href="https://www.incibe.es/protege-tu-empresa/blog/son-y-sirven-los-siem-ids-e-ips">¿Qué son y para qué sirven los SIEM, IDS e IPS?</a></p>
+<p><a href="https://www.reddit.com/r/linuxadmin/comments/8nv8kc/suricata_vs_snort/">Suricata vs snort</a> </p>
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-suricata-on-debian-11">How to install Suricata in Debian 11</a></p>
+<p><a href="https://computingforgeeks.com/how-to-install-suricata-ids-ips-on-debian/">How To Install Suricata on Debian 11/Debian 10</a></p>
+<p><a href="https://suricata.readthedocs.io/en/suricata-6.0.0/">Suricta User Guide</a></p>
 
 
 
@@ -1330,7 +1516,7 @@ Arkime is not meant to replace Intrusion Detection Systems (IDS) but instead pro
       <nav class="md-footer__inner md-grid" aria-label="Pie" >
         
           
-          <a href="../hardening.ssh/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Hardening SSH">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Apuntes y ejercicios prácticas del curso de especialización ciberseguridad">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1340,11 +1526,27 @@ Arkime is not meant to replace Intrusion Detection Systems (IDS) but instead pro
                 Anterior
               </span>
               <div class="md-ellipsis">
-                Hardening SSH
+                Apuntes y ejercicios prácticas del curso de especialización ciberseguridad
               </div>
             </div>
           </a>
         
+        
+          
+          <a href="../hardening.ssh/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Hardening SSH">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                Hardening SSH
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
         
       </nav>
     
